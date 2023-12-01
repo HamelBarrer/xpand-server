@@ -1,0 +1,18 @@
+-- CreateTable
+CREATE TABLE "NoteStates" (
+    "noteStateId" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NOT NULL,
+    "isActive" BOOLEAN NOT NULL DEFAULT true,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "Notes" (
+    "noteId" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "title" TEXT NOT NULL,
+    "noteStateId" INTEGER NOT NULL,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL,
+    CONSTRAINT "Notes_noteStateId_fkey" FOREIGN KEY ("noteStateId") REFERENCES "NoteStates" ("noteStateId") ON DELETE RESTRICT ON UPDATE CASCADE
+);
