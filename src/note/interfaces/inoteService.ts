@@ -1,6 +1,7 @@
-import { Note } from '../domain/note';
+import { Note, NoteState } from '../domain/note';
 
 export interface INoteService {
+  getNoteStates(): Promise<NoteState[]>;
   getNote(noteId: number): Promise<Note | null>;
   getNotes(): Promise<Note[]>;
   createNote(note: Note): Promise<Note>;

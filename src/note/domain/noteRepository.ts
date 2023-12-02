@@ -1,6 +1,7 @@
-import { Note } from './note';
+import { Note, NoteState } from './note';
 
 export interface NoteRepository {
+  listNoteState(): Promise<NoteState[]>;
   read(noteId: number): Promise<Note | null>;
   list(): Promise<Note[]>;
   save(note: Note): Promise<Note>;

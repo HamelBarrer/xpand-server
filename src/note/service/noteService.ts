@@ -1,9 +1,13 @@
-import { Note } from '../domain/note';
+import { Note, NoteState } from '../domain/note';
 import { NoteUseCase } from '../domain/noteUsecase';
 import { INoteService } from '../interfaces/inoteService';
 
 export class NoteService implements INoteService {
   constructor(private readonly noteUseCase: NoteUseCase) {}
+
+  async getNoteStates(): Promise<NoteState[]> {
+    return this.noteUseCase.listNoteState();
+  }
 
   async getNote(noteId: number): Promise<Note | null> {
     return this.noteUseCase.readNote(noteId);

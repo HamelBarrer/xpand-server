@@ -24,6 +24,10 @@ const noteSchema = object({
   noteStateId: number(),
 });
 
+router.get('/noteStates', (req, res) => {
+  noteController.getNoteStates(req, res);
+});
+
 router.get('/:noteId', (req, res) => {
   noteController.getNote(req, res);
 });

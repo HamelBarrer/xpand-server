@@ -4,6 +4,16 @@ import { NoteService } from '../service/noteService';
 export class NoteController {
   constructor(private readonly noteService: NoteService) {}
 
+  async getNoteStates(_: Request, res: Response) {
+    try {
+      const data = await this.noteService.getNoteStates();
+
+      res.status(200).json(data);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  }
+
   async getNote(req: Request, res: Response) {
     try {
       const noteId = Number(req.params.noteId);
@@ -20,11 +30,11 @@ export class NoteController {
   async getNotes(_: Request, res: Response) {
     try {
       const data = await this.noteService.getNotes();
-      if (data.length === 0) res.status(204).json();
+      if (data.length === 0) return res.status(204).json();
 
-      res.status(200).json(data);
+      return res.status(200).json(data);
     } catch (error) {
-      res.status(500).json({ error });
+      return res.status(500).json({ error });
     }
   }
 
@@ -32,7 +42,7 @@ export class NoteController {
     try {
       const data = await this.noteService.createNote(req.body);
 
-      res.status(200).json(data);
+      res.status(201).json(data);
     } catch (error) {
       res.status(500).json({ error });
     }

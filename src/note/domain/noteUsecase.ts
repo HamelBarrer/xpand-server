@@ -4,6 +4,10 @@ import { NoteRepository } from './noteRepository';
 export class NoteUseCase {
   constructor(private readonly noteRepository: NoteRepository) {}
 
+  async listNoteState() {
+    return this.noteRepository.listNoteState();
+  }
+
   async readNote(noteId: number) {
     return this.noteRepository.read(noteId);
   }
