@@ -22,6 +22,7 @@ model NoteStates {
 model Notes {
   noteId      Int        @id @default(autoincrement())
   title       String
+  description String
   noteState   NoteStates @relation(fields: [noteStateId], references: [noteStateId])
   noteStateId Int
   createdAt   DateTime   @default(now())
