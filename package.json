@@ -12,7 +12,7 @@
     "db:migrate": "npx prisma migrate dev --name"
   },
   "prisma": {
-    "seed": "ts-node-dev prisma/seed.ts"
+    "seed": "ts-node-dev --transpile-only prisma/seed.ts"
   },
   "keywords": [],
   "author": "",
