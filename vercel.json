@@ -4,5 +4,11 @@
       "src": "./src/index.ts",
       "use": "@vercel/node"
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/src/(.*)",
+      "dest": "/src"
+    }
   ]
 }
