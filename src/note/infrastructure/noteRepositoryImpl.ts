@@ -48,6 +48,9 @@ export class NoteRepositoryImpl implements NoteRepository {
         },
         createdAt: true,
       },
+      orderBy: {
+        updatedAt: 'desc',
+      },
     });
   }
 

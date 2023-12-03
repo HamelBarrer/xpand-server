@@ -42,11 +42,13 @@ router.post('/', (req, res) => {
     return noteController.createdNotes(req, res);
   } catch (error) {
     if (error instanceof ValiError) {
-      return res
-        .status(400)
-        .json({ input: error.issues[0].path![0].key, error: error.message });
+      const input = error.issues[0].path![0].key;
+      const message = `${error.message} in ${input}`;
+
+      return res.status(400).json({ message });
     }
-    return res.status(400).json({ error });
+    const err = error as Error;
+    return res.status(500).json({ message: err.message });
   }
 });
 
