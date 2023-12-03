@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "postinstall": "prisma generate",
     "start": "node ./dist/index.js",
     "dev": "ts-node-dev --respawn --transpile-only ./src/index.ts",
-    "build": "tsc",
+    "build": "prisma generate && tsc",
     "db:create": "npx prisma init --datasource-provider sqlite",
     "db:migrate": "npx prisma migrate dev --name"
   },
