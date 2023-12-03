@@ -11,6 +11,9 @@
     "db:create": "npx prisma init --datasource-provider sqlite",
     "db:migrate": "npx prisma migrate dev --name"
   },
+  "prisma": {
+    "seed": "ts-node-dev prisma/seed.ts"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
